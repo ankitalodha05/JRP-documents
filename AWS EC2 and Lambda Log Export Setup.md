@@ -82,7 +82,7 @@ Create an IAM Role for your Lambda function with the following AWS managed polic
 - `AWSLambdaExecute`
 - `CloudWatchFullAccess`
 
-### 🔄 Trust Relationship
+### 🔄 Trust Relationship(after creating role then edit trust policy)
 
 This policy defines what services can assume the role. Paste this JSON into the **Trust Relationships** tab:
 
