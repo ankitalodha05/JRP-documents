@@ -57,7 +57,7 @@ Paste this configuration to collect `/var/log/*`:
 Run the following command to apply the configuration and start the agent:
 
 ```bash
-/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
   -a fetch-config \
   -m ec2 \
   -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json \
