@@ -21,3 +21,45 @@ To use AWS with Terraform:
 * Once initialized, Terraform can interact with your AWS account using the same credentials configured earlier.
 
 ---
+Sure! Here's your explanation in clear **Q\&A format**:
+
+---
+
+**Q: What happens if I manually stop an EC2 instance created by Terraform and then run `terraform apply`?**
+
+**A: Nothing will happen to the instance — it will remain in the stopped state.**
+
+Terraform is **declarative** and tracks the infrastructure state. When you run `terraform apply`, it:
+
+* Compares the **actual state** in AWS with your **Terraform configuration**.
+* Since stopping an instance doesn't change its configuration, Terraform sees **no difference** and doesn't take any action.
+
+---
+
+**Q: Does Terraform manage the running or stopped state of an EC2 instance?**
+
+**A: No, by default Terraform does not manage the running or stopped state** of EC2 instances.
+It only ensures that the instance exists and matches the configuration (like instance type, AMI, tags, etc.).
+
+---
+
+**Q: What if I terminate (delete) the EC2 instance manually and then run `terraform apply`?**
+
+**A: Terraform will detect the missing instance and recreate it.**
+
+Terraform compares your AWS environment with the state file and desired configuration. If a resource is missing (like a terminated EC2), it will **provision it again**.
+
+---
+
+**Q: Is there any way to make Terraform automatically restart stopped EC2 instances?**
+
+**A: Not by default.**
+Terraform doesn’t manage instance runtime state unless you:
+
+* Use external tools/scripts.
+* Use lifecycle hooks or provisioning logic to start/stop EC2.
+* Or manage instance state separately (not recommended with Terraform alone).
+
+---
+
+
