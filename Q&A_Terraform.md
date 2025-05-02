@@ -21,9 +21,6 @@ To use AWS with Terraform:
 * Once initialized, Terraform can interact with your AWS account using the same credentials configured earlier.
 
 ---
-Sure! Here's your explanation in clear **Q\&A format**:
-
----
 
 **Q: What happens if I manually stop an EC2 instance created by Terraform and then run `terraform apply`?**
 
