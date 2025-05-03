@@ -23,3 +23,31 @@ if my RDS is public my request will go RDS to Secret manager and secret manager 
 > 2. **Using a VPC Endpoint for Secrets Manager** – This provides a secure and private connection to Secrets Manager entirely within the AWS network, without requiring internet access or a NAT gateway. It’s more secure and cost-efficient for private subnets."
 
 -![image](https://github.com/user-attachments/assets/22fe8975-5233-436f-9bd1-7f1d6f924081)
+
+here nat gatway to RDS -> RDS -> to nat -> nat to pvt subnet (this is how request will travel)
+
+✅ 1. Using a NAT Gateway
+How it works: Your private subnet routes the request to a NAT Gateway in a public subnet, which then allows outbound internet access to AWS Secrets Manager.
+
+Use case: If a VPC endpoint is not configured, NAT is the fallback method.
+
+Drawbacks:
+
+Incur extra costs for NAT data processing and bandwidth.
+
+Slightly less secure because it routes via the public internet (though encrypted).
+
+![image](https://github.com/user-attachments/assets/588edbd0-c7c4-4a7f-84f0-5481398975cb)
+
+
+✅ 2. Using a VPC Interface Endpoint (AWS PrivateLink) for Secrets Manager
+How it works: You create a VPC interface endpoint that allows your private resources to access Secrets Manager over the AWS internal network, without internet or a NAT Gateway.
+
+Benefits:
+
+Highly secure – never leaves AWS network.
+
+Cost-effective – avoids NAT gateway charges.
+
+Recommended for production environments.
+
